@@ -5,7 +5,7 @@
       <!-- 复选框 -->
       <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" :id="item.id" v-model="item.done"/>
-        <label class="custom-control-label" :for="item.id">{{item.task}}</label>
+        <label class="custom-control-label" :class="item.done ? 'delete': ''" :for="item.id">{{item.task}}</label>
       </div>
       <!-- 徽标 -->
       <span class="badge badge-success badge-pill" v-if="item.done">完成</span>
@@ -33,4 +33,11 @@ export default {
     .list-group {
         width: 400px
     }
+
+    .delete {
+      color: gray;
+      text-decoration: line-through;
+      font-style: italic;
+    }
+    
 </style>

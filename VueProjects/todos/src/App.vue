@@ -2,11 +2,13 @@
   <div>
     <h1>App 根组件</h1>
     <TodoList :todolist="todolist"></TodoList>
+    <TodoInput></TodoInput>
   </div>
 </template>
 
 <script>
 import TodoList from "./components/todo-list/TodoList.vue"
+import TodoInput from './components/todo-list/TodoInput.vue'
 
 export default {
   name:'MyApp',
@@ -20,7 +22,8 @@ export default {
    }
   },
   components: {
-    "TodoList": TodoList
+    "TodoList": TodoList,
+    TodoInput
   }
 }
 </script>
