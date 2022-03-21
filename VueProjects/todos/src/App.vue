@@ -2,8 +2,8 @@
   <div>
     <h1>App 根组件</h1>
     <TodoInput @add="onAddNewTask"></TodoInput>
-    <TodoList :todolist="todolist" class="mt-2"></TodoList>
-    <TodoButton></TodoButton>
+    <TodoList :todolist="todotask" class="mt-2"></TodoList>
+    <TodoButton v-model:active="activeBtnIndex"></TodoButton>
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
        {id: 2, task: "have lunch at 11:30", done: false},
        {id: 3, task: "go home at 5:00", done: true}
      ],
-     nextId: 4
+     nextId: 4,
+     activeBtnIndex: 1
    }
   },
   components: {
@@ -37,6 +38,19 @@ export default {
       done: false
       })
       this.nextId += 1
+    }
+  },
+  computed: {
+    todotask() {
+      switch(this.activeBtnIndex) {
+        case 0:
+          return this.todolist
+        case 1:
+          return this.todolist.filter(x => x.done)
+        case 2:
+          return this.todolist.filter(x => !x.done)
+
+      }
     }
   }
 }
